@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CsvFileAttributes">
+    <option name="attributeMap">
+      <map>
+        <entry key="\20200426_UOWM_IEC104_Dataset_c_ci_na_1_attacker1.pcap_Flow.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\20200426_UOWM_IEC104_Dataset_c_ci_na_1_attacker1_iec104_only.pcap_Flow.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\20200426_UOWM_IEC104_Dataset_c_ci_na_1_attacker1_iec104_only.pcapiec104_network_flow_leayer.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
