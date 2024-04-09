@@ -1,5 +1,5 @@
 from sklearn.metrics import accuracy_score, f1_score
-from data_preprocessing import load_data, split_data
+from data_preprocessing import load_data_train,load_data_test, split_data
 import numpy as np
 
 
