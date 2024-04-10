@@ -31,14 +31,56 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="\c_ci_na_1_test1.csv">
+        <entry key="\c_ci_na_1_train.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>
-        <entry key="\c_ci_na_1_train.csv">
+        <entry key="\data_list\c_ci_na_1_attacker1.pcap_Flow.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\data_list\c_ci_na_1_attacker2.pcap_Flow.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\data_list\c_ci_na_1_attacker3.pcap_Flow.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\data_list\merged.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\data_list\test_data\c_ci_na_1_attacker2.pcap_Flow.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\data_list\test_data\c_ci_na_1_iecserver1.pcap_Flow.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\data_list\test_data\c_ci_na_1_iecserver2.pcap_Flow.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
