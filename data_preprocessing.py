@@ -16,14 +16,19 @@ def load_data_train(csv_file):
 
 
     # 假设最后一列是标签，其余为特征
-    label_mapping = {'NORMAL': 0, 'c_ci_na_1': 1}
-    df['Label'] = df['Label'].map(label_mapping)
-    df_subset.to_csv('c_ci_na_1_train.csv', index=False)
+    # 假设原始标签存储在 df['Label'] 中
+    label_mapping = {'NORMAL': 0, 'c_ci_na_1': 1, 'c_sc_na_1': 2, 'c_se_na_1': 3}  # 确保映射覆盖了所有可能的标签
+
+    # 应用映射
+
+    df_subset['Label'] = df_subset['Label'].map(label_mapping)
+
+    df=df_subset
     X = df.iloc[:, :-1].values
     y = df.iloc[:, -1].values
 
-    # 将无限大值替换为NaN
-    # X = np.where(np.isinf(X), np.nan, X)
+    #将无限大值替换为NaN
+    X = np.where(np.isinf(X), np.nan, X)
 
     # 将DataFrame中的NaN值替换或删除
     X_df = pd.DataFrame(X)
@@ -37,7 +42,7 @@ def load_data_train(csv_file):
     scaler = StandardScaler()
     X_scaled = scaler.fit_transform(X_cleaned)
     print(y.shape)
-
+    df.to_csv('predeal_' + csv_file, index=False)
     return X_scaled, y
 
 def load_data_test(csv_file):
@@ -52,9 +57,11 @@ def load_data_test(csv_file):
 
 
     # 假设最后一列是标签，其余为特征
-    label_mapping = {'NORMAL': 0, 'c_ci_na_1': 1}
-    df['Label'] = df['Label'].map(label_mapping)
-    df_subset.to_csv('c_ci_na_1_test.csv', index=False)
+    label_mapping = {'NORMAL': 0, 'c_ci_na_1': 1,'c_sc_na_1': 2, 'c_se_na_1': 3}  # 确保映射覆盖了所有可能的标签
+
+    df_subset['Label'] = df_subset['Label'].map(label_mapping)
+    df=df_subset
+
     X = df.iloc[:, :-1].values
     y = df.iloc[:, -1].values
 
@@ -73,7 +80,7 @@ def load_data_test(csv_file):
     scaler = StandardScaler()
     X_scaled = scaler.fit_transform(X_cleaned)
     print(y.shape)
-
+    df.to_csv('predeal_' + csv_file, index=False)
     return X_scaled, y
 
 

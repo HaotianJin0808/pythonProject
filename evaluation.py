@@ -4,14 +4,16 @@ import numpy as np
 
 
 def evaluate_model(model, X_test, y_test):
+    print("X_test shape:", X_test.shape)  # 打印 X_test 的形状来检查
     predictions = model.predict(X_test)
-    # 这里需要根据自编码器的重构误差来确定异常，你可能需要设置一个阈值
-    # 假设阈值为0.5
+    # 根据自编码器的重构误差确定异常
     threshold = 0.5
     y_pred = [1 if np.mean((p - t) ** 2) > threshold else 0 for p, t in zip(predictions, X_test)]
 
     accuracy = accuracy_score(y_test, y_pred)
-    f1 = f1_score(y_test, y_pred, average='binary')
+    # 使用 'weighted' 作为多分类问题的平均计算方法
+    f1 = f1_score(y_test, y_pred, average='weighted')
 
     print("Model Accuracy: {:.2f}".format(accuracy))
     print("Model F1 Score: {:.2f}".format(f1))
+

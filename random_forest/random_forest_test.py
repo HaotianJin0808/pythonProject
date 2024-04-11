@@ -6,7 +6,7 @@ from sklearn.impute import SimpleImputer
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler
 # 1. 加载数据
-df = pd.read_csv('D:/python_code/pythonProject/data_list/training_data.csv')
+df = pd.read_csv('/data_list/c_ci_na_1_training_data.csv')
 columns_to_delete = ['flow id', 'protocol', 'src ip', 'dst ip', 'src port', 'dst port','flow start timestamp']
 df = df.drop(columns_to_delete, axis=1)
 
