@@ -1,20 +1,47 @@
 from model import create_autoencoder
+from keras.callbacks import Callback
+from sklearn.metrics import accuracy_score, f1_score
 from data_preprocessing import load_data_train,load_data_test, split_data
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib
 matplotlib.use('TkAgg')
 
-def train_local_models(X_train, y_train, num_clients=3):
+
+class EvaluationMetrics(Callback):
+    def __init__(self, X_test, y_test, threshold=0.5):
+        super().__init__()
+        self.X_test = X_test
+        self.y_test = y_test
+        self.threshold = threshold
+        self.accuracies = []
+        self.f1_scores = []
+
+    def on_epoch_end(self, epoch, logs=None):
+        predictions = self.model.predict(self.X_test)
+        y_pred = [1 if np.mean((p - t) ** 2) > self.threshold else 0 for p, t in zip(predictions, self.X_test)]
+
+        accuracy = accuracy_score(self.y_test, y_pred)
+        f1 = f1_score(self.y_test, y_pred, average='binary')
+
+        self.accuracies.append(accuracy)
+        self.f1_scores.append(f1)
+
+        print(f"Epoch: {epoch + 1}, Accuracy: {accuracy:.2f}, F1 Score: {f1:.2f}")
+
+def train_local_models(X_train, y_train, X_test,y_test,num_clients=3):
     models = []
     histories = []  # 用于记录每个模型的训练历史
     chunk_size = len(X_train) // num_clients
     print("X_trian维度：", X_train.shape)
+
+    evaluation_metrics = EvaluationMetrics(X_test, y_test)
+
     for i in range(num_clients):
         X_local = X_train[i*chunk_size:(i+1)*chunk_size]
         model = create_autoencoder(X_local.shape[1])
 
-        history=model.fit(X_local, X_local, epochs=10, batch_size=256, shuffle=True, verbose=0)
+        history=model.fit(X_local, X_local, epochs=16, batch_size=256, shuffle=True, verbose=0,callbacks=[evaluation_metrics])
         models.append(model)
         histories.append(history.history)  # 记录每个模型的训练历史
         # 绘制损失函数随着迭代次数的变化图像
@@ -25,6 +52,26 @@ def train_local_models(X_train, y_train, num_clients=3):
     plt.xlabel('Epochs')
     plt.ylabel('Loss')
     plt.legend()
+    plt.show()
+
+    # 绘制准确率和F1值随迭代次数变化的图像
+    plt.figure(figsize=(12, 5))
+
+    plt.subplot(1, 2, 1)
+    plt.plot(evaluation_metrics.accuracies, label='Accuracy')
+    plt.title('Accuracy vs. Epochs')
+    plt.xlabel('Epoch')
+    plt.ylabel('Accuracy')
+    plt.legend()
+
+    plt.subplot(1, 2, 2)
+    plt.plot(evaluation_metrics.f1_scores, label='F1 Score')
+    plt.title('F1 Score vs. Epochs')
+    plt.xlabel('Epoch')
+    plt.ylabel('F1 Score')
+    plt.legend()
+
+    plt.tight_layout()
     plt.show()
 
     return models,histories

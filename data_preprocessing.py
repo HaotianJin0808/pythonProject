@@ -8,18 +8,22 @@ import numpy as np
 def load_data_train(csv_file):
     df = pd.read_csv(csv_file)
     #删除无用列
-    columns_to_delete = ['Flow ID', 'Src IP', 'Src Port','Dst IP','Dst Port','Timestamp','Flow Duration']
+    columns_to_delete = ['flow id', 'protocol', 'src ip', 'dst ip', 'src port', 'dst port','flow start timestamp']
     df = df.drop(columns_to_delete, axis=1)
+    df_subset = df[['total flow packets', 'flow total IEC104_S_Message packets', 'flow PSH flag count','flow total IEC104_U_Message packets',
+                    'fw IAT min','init fw window bytes','flow ACK flag count','bw total IEC104_S_Message packets',
+                    'bw PSH flag amount','fw total IEC104_U_Message packets','total bw packets','Label']]
+
 
     # 假设最后一列是标签，其余为特征
     label_mapping = {'NORMAL': 0, 'c_ci_na_1': 1}
     df['Label'] = df['Label'].map(label_mapping)
-    df.to_csv('c_ci_na_1_train.csv', index=False)
+    df_subset.to_csv('c_ci_na_1_train.csv', index=False)
     X = df.iloc[:, :-1].values
     y = df.iloc[:, -1].values
 
     # 将无限大值替换为NaN
-    X = np.where(np.isinf(X), np.nan, X)
+    # X = np.where(np.isinf(X), np.nan, X)
 
     # 将DataFrame中的NaN值替换或删除
     X_df = pd.DataFrame(X)
@@ -38,14 +42,19 @@ def load_data_train(csv_file):
 
 def load_data_test(csv_file):
     df = pd.read_csv(csv_file)
-    #删除无用列
-    columns_to_delete = ['Flow ID', 'Src IP', 'Src Port','Dst IP','Dst Port','Timestamp','Flow Duration']
+
+    # 删除无用列
+    columns_to_delete = ['flow id', 'protocol', 'src ip', 'dst ip', 'src port', 'dst port','flow start timestamp']
     df = df.drop(columns_to_delete, axis=1)
+    df_subset = df[['total flow packets', 'flow total IEC104_S_Message packets', 'flow PSH flag count','flow total IEC104_U_Message packets',
+                    'fw IAT min','init fw window bytes','flow ACK flag count','bw total IEC104_S_Message packets',
+                    'bw PSH flag amount','fw total IEC104_U_Message packets','total bw packets','Label']]
+
 
     # 假设最后一列是标签，其余为特征
     label_mapping = {'NORMAL': 0, 'c_ci_na_1': 1}
     df['Label'] = df['Label'].map(label_mapping)
-    df.to_csv('c_ci_na_1_test.csv', index=False)
+    df_subset.to_csv('c_ci_na_1_test.csv', index=False)
     X = df.iloc[:, :-1].values
     y = df.iloc[:, -1].values
 

@@ -9,7 +9,7 @@ if __name__ == "__main__":
     X_train, X_test, y_train, y_test = split_data(X_train, y_train, test_size=0.2)
 
     # 训练本地模型
-    local_models,histories = train_local_models(X_train, y_train)
+    local_models,histories = train_local_models(X_train, y_train,X_test,y_test)
 
     # 聚合模型
     global_model = aggregate_models(local_models)

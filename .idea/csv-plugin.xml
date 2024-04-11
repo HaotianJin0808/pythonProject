@@ -87,6 +87,83 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\data_list\test_data\c_ci_na_1_iecserver5_iec104_only.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\data_list\test_data\c_ci_na_1_iecserver6_iec104_only.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\data_list\test_data\c_ci_na_1_iecserver7_iec104_only.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\data_list\test_data\c_ci_na_1_qtester_iec104_only.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\data_list\training_data\c_ci_na_1_attacker1_iec104_only.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\data_list\training_data\c_ci_na_1_attacker2_iec104_only.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\data_list\training_data\c_ci_na_1_attacker3_iec104_only.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\data_list\training_data\c_ci_na_1_iecserver1_iec104_only.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\data_list\training_data\c_ci_na_1_iecserver2_iec104_only.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\data_list\training_data\c_ci_na_1_iecserver3_iec104_only.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\data_list\training_data\c_ci_na_1_iecserver4_iec104_only.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
       </map>
     </option>
   </component>
